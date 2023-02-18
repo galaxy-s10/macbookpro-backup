@@ -7,14 +7,14 @@ function gitIsClean() {
 }
 
 function gitPush(commitMsg) {
-  exec('git status -s', (error, stdout, stderr) => {
-    console.log(`---error---1`);
-    console.log(error);
-    console.log(`---stdout---,length:${stdout.length}`);
-    console.log(stdout);
-    console.log(`---stderr---,length:${stderr.length}`);
-    console.log(stderr);
-    if (error || stderr) {
+  exec('git push', (error, stdout, stderr) => {
+    if (error) {
+      console.log(`---error---`);
+      console.log(error);
+      console.log(`---stdout---,length:${stdout.length}`);
+      console.log(stdout);
+      console.log(`---stderr---,length:${stderr.length}`);
+      console.log(stderr);
       console.log(
         `${new Date().toLocaleString()}，提交信息：${commitMsg}，上传到github失败！`
       );
@@ -28,14 +28,22 @@ function gitPush(commitMsg) {
 
 function main() {
   chokidar.watch(['./doc']).on('all', (eventname, path) => {
-    if (gitIsClean()) {
-      console.log('git工作区是干净的，就不需要保存', eventname, path);
-      return;
+    try {
+      if (gitIsClean()) {
+        console.log('git工作区是干净的，就不需要保存', eventname, path);
+        return;
+      }
+      const commitMsg = eventname + ':' + path;
+      execSync(`git add .`);
+      execSync(`git commit -m '${commitMsg}'`);
+      console.log(
+        `${new Date().toLocaleString()}，提交信息：${commitMsg}，本地保存成功！`
+      );
+      gitPush(commitMsg);
+    } catch (error) {
+      console.log(error);
+      console.log('出错了~');
     }
-    const commitMsg = eventname + ':' + path;
-    execSync(`git add .`);
-    execSync(`git commit -m '${commitMsg}'`);
-    gitPush(commitMsg);
   });
 }
 
