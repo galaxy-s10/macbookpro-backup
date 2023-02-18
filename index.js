@@ -7,12 +7,12 @@ function gitIsClean() {
 }
 
 function gitPush(commitMsg) {
-  exec('git push', (error, stdout, stderr) => {
+  exec('git status', (error, stdout, stderr) => {
     if (error || stderr) {
       console.log('---error---');
       console.log(error);
       console.log('---stdout---');
-      console.log(stdout.length);
+      console.log(stdout);
       console.log('---stderr---');
       console.log(stderr);
       console.log(
