@@ -12,7 +12,7 @@ function gitPush(commitMsg) {
       console.log('---error---');
       console.log(error);
       console.log('---stdout---');
-      console.log(stdout);
+      console.log(stdout.length);
       console.log('---stderr---');
       console.log(stderr);
       console.log(
