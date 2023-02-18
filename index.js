@@ -7,22 +7,18 @@ function gitIsClean() {
 }
 
 function gitPush(commitMsg) {
-  try {
-    exec('git push', (error, stdout, stderr) => {
-      if (error || stderr) {
-        console.log(error, stderr, stdout);
-        console.log(
-          `${new Date().toLocaleString()}，提交信息：${commitMsg}，上传到github失败！`
-        );
-        return;
-      }
+  exec('git push', (error, stdout, stderr) => {
+    if (error || stderr) {
+      console.log(error, stderr, stdout);
       console.log(
-        `${new Date().toLocaleString()}，提交信息：${commitMsg}，上传到github成功！`
+        `${new Date().toLocaleString()}，提交信息：${commitMsg}，上传到github失败！`
       );
-    });
-  } catch (error) {
-    console.log(error);
-  }
+      return;
+    }
+    console.log(
+      `${new Date().toLocaleString()}，提交信息：${commitMsg}，上传到github成功！`
+    );
+  });
 }
 
 function main() {
