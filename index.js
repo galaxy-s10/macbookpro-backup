@@ -28,7 +28,7 @@ function gitPush(commitMsg) {
 function main() {
   chokidar.watch(['./doc']).on('all', (eventname, path) => {
     if (gitIsClean()) {
-      console.log(eventname, path, 'git工作区是干净的，就不需要保存');
+      console.log('git工作区是干净的，就不需要保存', eventname, path);
       return;
     }
     const commitMsg = eventname + ':' + path;
