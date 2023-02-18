@@ -12,12 +12,12 @@ function gitPush(commitMsg) {
       if (error || stderr) {
         console.log(error, stderr, stdout);
         console.log(
-          `${new Date().toLocaleString()},提交${commitMsg}到github失败！`
+          `${new Date().toLocaleString()}，提交信息：${commitMsg}，上传到github失败！`
         );
         return;
       }
       console.log(
-        `${new Date().toLocaleString()},提交${commitMsg}到github成功！`
+        `${new Date().toLocaleString()}，提交信息：${commitMsg}，上传到github成功！`
       );
     });
   } catch (error) {
