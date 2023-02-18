@@ -1,0 +1,22 @@
+{
+  "name": "macbookpro-backup",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/galaxy-s10/macbookpro-backup.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/galaxy-s10/macbookpro-backup/issues"
+  },
+  "homepage": "https://github.com/galaxy-s10/macbookpro-backup#readme",
+  "dependencies": {
+    "chokidar": "^3.5.3"
+  }
+}
