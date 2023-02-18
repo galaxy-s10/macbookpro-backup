@@ -9,7 +9,12 @@ function gitIsClean() {
 function gitPush(commitMsg) {
   exec('git push', (error, stdout, stderr) => {
     if (error || stderr) {
-      console.log(error, 1);
+      console.log('---error---');
+      console.log(error);
+      console.log('---stdout---');
+      console.log(stdout);
+      console.log('---stderr---');
+      console.log(stderr);
       console.log(
         `${new Date().toLocaleString()}，提交信息：${commitMsg}，上传到github失败！`
       );
