@@ -1,4 +1,4 @@
-安装node
+安装 node
 
 ```sh
 docker pull node:16.19.0
@@ -10,16 +10,16 @@ docker pull node:16.19.0
 docker images
 ```
 
+使用当前目录的 Dockerfile 创建镜像，名称为 vue3-blog-server-beta
+
+```sh
+docker build -t vue3-blog-server-beta .
+```
+
 删除镜像
 
 ```sh
 docker rmi -f vue3-blog-server-beta
-```
-
-使用当前目录的 Dockerfile 创建镜像，名称为vue3-blog-server-beta
-
-```sh
-docker build -t vue3-blog-server-beta .
 ```
 
 运行镜像
@@ -30,13 +30,11 @@ docker build -t vue3-blog-server-beta .
 docker run -p 3300:3300 -d vue3-blog-server-beta
 ```
 
-
-
 ```sh
 docker run vue3-blog-server-beta
 ```
 
-
+# 一些参数
 
 ## WORKDIR
 
